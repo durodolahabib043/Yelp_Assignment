@@ -12,6 +12,8 @@ public class Constant {
     public static String REVIEW = "review";
     public static String ADDRESS = "address";
     public static String IMAGE_URL = "imageUrl";
+    public static String RESTURANT_M = "Fetching Resturant";
+    public static String WAIT = "Please wait...";
     //SKJKCQOQphyouKRQO3THaIzeDAs
 
 

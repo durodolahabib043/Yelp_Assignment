@@ -77,8 +77,15 @@ public class ResturantFragment extends AbstractResturantFragment implements Sear
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
         rv.setLayoutManager(gridLayoutManager);
         downloadResturantDeatils();
+        final ProgressDialog loading;
         searchView.setOnQueryTextListener(this);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        searchView.setQuery("", false);
+        searchView.clearFocus();
     }
 
     @Override
@@ -92,13 +99,17 @@ public class ResturantFragment extends AbstractResturantFragment implements Sear
         searchResturant(query);
         rv.scrollToPosition(0);
         return true;
-
     }
 
     // Query the recyclerview
     private void searchResturant(String search) {
         params.put("term", search);
         params.put("limit", "10");
+        searchResutrantService();
+    }
+
+    private void searchResutrantService() {
+
         Call<SearchResponse> call = yelpAPI.search("toronto", params);
         call.enqueue(new Callback<SearchResponse>() {
             @Override
@@ -107,7 +118,22 @@ public class ResturantFragment extends AbstractResturantFragment implements Sear
                 sortResturant(data);
                 resturantAdapter = new ResturantAdapter(getContext(), data);
                 rv.setAdapter(resturantAdapter);
+                if (resturantAdapter != null) {
+                    resturantAdapter.SetOnItemCLickListener(new ResturantAdapter.MyItemClickListener() {
+                        @Override
+                        public void onItemClick(int position, View v) {
+                            String name = response.body().businesses().get(position).name();
+                            String address = response.body().businesses().get(position).location().displayAddress().toString();
+                            String imageUrl = response.body().businesses().get(position).imageUrl();
+                            String latestReview = response.body().businesses().get(position).snippetText();
+                            String phone = response.body().businesses().get(position).displayPhone();
+                            Double rate = response.body().businesses().get(position).rating();
+                            Switchfragment(ResturantDetail.newInstance(), name, address, imageUrl, latestReview, phone, rate);
+                        }
+                    });
+                }
             }
+
             @Override
             public void onFailure(Call<SearchResponse> call, Throwable t) {
             }
@@ -116,7 +142,7 @@ public class ResturantFragment extends AbstractResturantFragment implements Sear
 
     // download random 10 resturant
     private void downloadResturantDeatils() {
-        final ProgressDialog loading = ProgressDialog.show(getContext(), "Fetching Contact", "Please wait...", false, false);
+        final ProgressDialog loading = ProgressDialog.show(getContext(), Constant.RESTURANT_M, Constant.WAIT, false, false);
         params.put("term", "resturant");
         params.put("limit", "10");
         Call<SearchResponse> call = yelpAPI.search("toronto", params);
@@ -138,7 +164,7 @@ public class ResturantFragment extends AbstractResturantFragment implements Sear
                             String latestReview = response.body().businesses().get(position).snippetText();
                             String phone = response.body().businesses().get(position).displayPhone();
                             Double rate = response.body().businesses().get(position).rating();
-                            Switchfragment(ResturantDetail.newInstance(), name, address, imageUrl, latestReview, phone , rate);
+                            Switchfragment(ResturantDetail.newInstance(), name, address, imageUrl, latestReview, phone, rate);
                         }
                     });
                 }

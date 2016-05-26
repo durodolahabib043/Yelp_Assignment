@@ -53,6 +53,7 @@ public class ResturantDetail extends AbstractResturantFragment {
         phonetxt = (TextView) view.findViewById(R.id.phone);
         imageView = (ImageView) view.findViewById(R.id.imagel);
         ratingtxt = (TextView) view.findViewById(R.id.rating);
+
         bundle = this.getArguments();
         address = bundle.getString(Constant.ADDRESS);
         review = bundle.getString(Constant.REVIEW);
@@ -60,6 +61,7 @@ public class ResturantDetail extends AbstractResturantFragment {
         name = bundle.getString("name");
         phone = bundle.getString("phone");
         rating = Double.valueOf(bundle.getDouble(String.valueOf("rating")));
+
         nametxt.setText(name);
         reviewtxt.setText(review);
         addresstxt.setText(address.substring(1, address.length() - 1));

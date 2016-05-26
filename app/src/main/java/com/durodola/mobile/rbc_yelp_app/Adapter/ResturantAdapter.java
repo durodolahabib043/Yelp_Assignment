@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import com.yelp.clientlib.entities.Business;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by mobile on 2016-04-01.
@@ -46,62 +45,10 @@ public class ResturantAdapter extends RecyclerView.Adapter<ResturantAdapter.Pers
         holder.address_cardview.setText(address.substring(1, address.length() - 1));
         Picasso.with(this.context).load(searchResponseArrayList.get(position).imageUrl()).into(holder.photo);
     }
+
     @Override
     public int getItemCount() {
         return searchResponseArrayList.size();
-    }
-
-
-    public void animateTo(List<Business> models) {
-        applyAndAnimateRemovals(models);
-        applyAndAnimateAdditions(models);
-        applyAndAnimateMovedItems(models);
-    }
-
-    private void applyAndAnimateRemovals(List<Business> newModels) {
-        for (int i = searchResponseArrayList.size() - 1; i >= 0; i--) {
-            final Business model = searchResponseArrayList.get(i);
-            if (!newModels.contains(model)) {
-                removeItem(i);
-            }
-        }
-    }
-
-    private void applyAndAnimateAdditions(List<Business> newModels) {
-        for (int i = 0, count = newModels.size(); i < count; i++) {
-            final Business model = newModels.get(i);
-            if (!searchResponseArrayList.contains(model)) {
-                addItem(i, model);
-            }
-        }
-    }
-
-    private void applyAndAnimateMovedItems(List<Business> newModels) {
-        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final Business model = newModels.get(toPosition);
-            final int fromPosition = searchResponseArrayList.indexOf(model);
-            if (fromPosition >= 0 && fromPosition != toPosition) {
-                moveItem(fromPosition, toPosition);
-            }
-        }
-    }
-
-
-    public Business removeItem(int position) {
-        final Business model = searchResponseArrayList.remove(position);
-        notifyItemRemoved(position);
-        return model;
-    }
-
-    public void addItem(int position, Business model) {
-        searchResponseArrayList.add(position, model);
-        notifyItemInserted(position);
-    }
-
-    public void moveItem(int fromPosition, int toPosition) {
-        final Business model = searchResponseArrayList.remove(fromPosition);
-        searchResponseArrayList.add(toPosition, model);
-        notifyItemMoved(fromPosition, toPosition);
     }
 
     public interface MyItemClickListener {
@@ -133,6 +80,7 @@ public class ResturantAdapter extends RecyclerView.Adapter<ResturantAdapter.Pers
         }
     }
 
+    // click
     public void SetOnItemCLickListener(MyItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
