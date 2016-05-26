@@ -1,4 +1,4 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Utils;
 
 import com.yelp.clientlib.connection.YelpAPI;
 import com.yelp.clientlib.exception.ErrorHandlingInterceptor;

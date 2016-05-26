@@ -1,4 +1,4 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Abstract;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
+import com.durodola.mobile.rbc_yelp_app.R;
 import com.yelp.clientlib.entities.Business;
 
 import java.util.ArrayList;

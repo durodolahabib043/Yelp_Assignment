@@ -1,4 +1,4 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Utils;
 
 /**
  * Created by mobile on 2016-05-24.

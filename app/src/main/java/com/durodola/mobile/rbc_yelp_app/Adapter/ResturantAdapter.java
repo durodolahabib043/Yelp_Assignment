@@ -1,4 +1,4 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.durodola.mobile.rbc_yelp_app.R;
 import com.squareup.picasso.Picasso;
 import com.yelp.clientlib.entities.Business;
 

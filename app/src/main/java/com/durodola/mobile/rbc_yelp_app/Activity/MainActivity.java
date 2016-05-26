@@ -1,8 +1,11 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.durodola.mobile.rbc_yelp_app.Fragment.ResturantFragment;
+import com.durodola.mobile.rbc_yelp_app.R;
 
 public class MainActivity extends AppCompatActivity {
 

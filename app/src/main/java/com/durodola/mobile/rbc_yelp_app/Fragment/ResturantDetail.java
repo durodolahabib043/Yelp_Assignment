@@ -1,4 +1,4 @@
-package com.durodola.mobile.rbc_yelp_app;
+package com.durodola.mobile.rbc_yelp_app.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.durodola.mobile.rbc_yelp_app.Abstract.AbstractResturantFragment;
+import com.durodola.mobile.rbc_yelp_app.Utils.Constant;
+import com.durodola.mobile.rbc_yelp_app.R;
 import com.squareup.picasso.Picasso;
 
 /**

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.durodola.mobile.rbc_yelp_app.ResturantFragment">
+    tools:context=".Fragment.ResturantFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
